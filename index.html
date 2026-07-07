@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>te adoro, te adoro, te adoro</title>
+    <style>
+        body {
+            background-color: #fffaf0; 
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M30,20 C10,30 15,60 35,55 C45,50 60,70 40,80 C20,90 80,95 70,60 C60,30 85,20 50,45 C40,20 35,10 30,20 Z' fill='%23ffb6c1' opacity='0.3'/%3E%3Ccircle cx='15' cy='75' r='3' fill='%23ffb6c1' opacity='0.4'/%3E%3Ccircle cx='80' cy='25' r='5' fill='%23ffb6c1' opacity='0.3'/%3E%3Cpath d='M10,10 L12,40 L8,25 Z' fill='%23ffb6c1' opacity='0.2'/%3E%3C/svg%3E");
+            color: #ff69b4; 
+            font-family: 'Comic Sans MS', cursive, sans-serif; 
+            margin: 0;
+            padding: 0;
+            overflow-y: auto; 
+            user-select: none;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        .fondo-legible {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            font-size: 16px; 
+            line-height: 1.5; 
+            letter-spacing: 1.5px;
+            text-align: justify;
+            opacity: 0.7; 
+            word-wrap: break-word;
+            padding: 20px;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .altar-fotos {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px; 
+            padding: 60px 20px;
+            box-sizing: border-box;
+        }
+
+        .foto {
+            background-color: #fff; 
+            border: 2px solid #ffb6c1; 
+            padding: 10px 10px 20px 10px; 
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.5); 
+            width: 200px; 
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .foto:nth-child(3n+1) { transform: rotate(-3deg); }
+        .foto:nth-child(3n+2) { transform: rotate(3deg); }
+        .foto:nth-child(3n) { transform: rotate(1deg); }
+
+        .foto:hover:not(.ampliada) {
+            transform: scale(1.05) rotate(0deg);
+            border-color: #ff69b4;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+        }
+
+        .foto img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(10%) contrast(110%) sepia(5%); 
+            margin-bottom: 12px; 
+        }
+
+        .texto-japones {
+            font-size: 15px;
+            color: #ff1493;
+            font-weight: bold;
+            margin: 0;
+            font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+        }
+
+        .foto.ampliada {
+            transform: scale(1.4) rotate(0deg) !important; 
+            border-color: #ff1493; 
+            box-shadow: 0 0 30px rgba(255, 20, 147, 1);
+            position: relative;
+            z-index: 999;
+        }
+
+        .mancha-esquina {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 182, 193, 0.6) 0%, rgba(255, 250, 240, 0) 70%);
+            z-index: 3;
+            pointer-events: none;
+        }
+        .top-left { top: -60px; left: -60px; }
+        .bottom-right { bottom: -60px; right: -60px; }
+    </style>
+</head>
+<body>
+
+    <div class="mancha-esquina top-left"></div>
+    <div class="mancha-esquina bottom-right"></div>
+
+    <div class="fondo-legible">
+        <script>
+            const frases = [
+                "me encantas me encantas", "you & me you & me", "愛してる 愛してる",
+                "soy tuyo soy tuyo", "eres mía eres mía", "tú y yo tú y yo",
+                "i love you so much i love you so much", "君が大好き 君が大好き",
+                "always together always together", "contigo siempre contigo siempre", "ずっと一緒 ずっと一緒"
+            ];
+            let textoMasivo = "";
+            for (let i = 0; i < 700; i++) {
+                textoMasivo += frases[Math.floor(Math.random() * frases.length)] + " ";
+            }
+            document.write(textoMasivo);
+        </script>
+    </div>
+
+    <div class="altar-fotos">
+        
+        <div class="foto" onclick="alternarAmpliacion(this)">
+            <img src="foto1.jpg" alt="">
+            <p class="texto-japones">笑顔が素敵</p>
+        </div>
+
+        <div class="foto" onclick="alternarAmpliacion(this)">
+            <img src="foto2.jpg" alt="">
+            <p class="texto-japones">永遠に君と</p>
+        </div>
+
+        <div class="foto" onclick="alternarAmpliacion(this)">
+            <img src="foto3.jpg" alt="">
+            <p class="texto-japones">運命の人</p>
+        </div>
+
+        <div class="foto" onclick="alternarAmpliacion(this)">
+            <img src="foto4.jpg" alt="">
+            <p class="texto-japones">心から愛してる</p>
+        </div>
+
+        <div class="foto" onclick="alternarAmpliacion(this)">
+            <img src="foto5.jpg" alt="">
+            <p class="texto-japones">いつも想ってる</p>
+        </div>
+
+        <div class="foto" onclick="alternarAmpliacion(this)">
+            <img src="foto6.jpg" alt="">
+            <p class="texto-japones">私の宝物</p>
+        </div>
+
+    </div>
+
+    <script>
+        function alternarAmpliacion(elemento) {
+            if (elemento.classList.contains('ampliada')) {
+                elemento.classList.remove('ampliada');
+            } else {
+                document.querySelectorAll('.foto').forEach(f => f.classList.remove('ampliada'));
+                elemento.classList.add('ampliada');
+            }
+        }
+    </script>
+
+</body>
+</html>
